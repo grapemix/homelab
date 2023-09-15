@@ -1,0 +1,58 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: homelab-test
+  namespace: flux-system
+spec:
+  #gitImplementation: go-git
+  interval: 5m
+  url: ssh://git@github.com/grapemix/homelab-test
+  ref:
+    # can be a tag or branch
+    #tag: v0.0.1
+    branch: test2
+    #branch: main
+  #
+  secretRef:
+    name: github-private-key
+  #ignore: |
+  #  # exclude all
+  #  /*
+  #  # include kubernetes directory
+  #  !/deploy/chart/local-path-provisioner
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: mod-homelab-test
+  namespace: flux-system
+spec:
+  force: true
+  interval: 1m0s
+  dependsOn:
+    - name: cluster-apps-external-dns
+  path: ./
+  # not work
+  #path: ./kubernetes/apps/test/
+  #path: ./kubernetes/apps/test/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab-test
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings
+      - kind: Secret
+        name: cluster-secrets
+      - kind: ConfigMap
+        name: cluster-settings-user
+      - kind: Secret
+        name: cluster-secrets-email
+      - kind: Secret
+        name: cluster-secrets-user
