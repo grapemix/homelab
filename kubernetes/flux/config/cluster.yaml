@@ -5,7 +5,7 @@ metadata:
   name: home-kubernetes
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 3m
   ref:
     branch: main
   url: "https://github.com/grapemix/homelab.git"
@@ -21,7 +21,7 @@ metadata:
   name: cluster
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 3m
   path: ./kubernetes/flux
   prune: true
   wait: false
