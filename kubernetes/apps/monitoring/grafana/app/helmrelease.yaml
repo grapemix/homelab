@@ -79,6 +79,15 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/network
+          - name: db
+            orgId: 1
+            folder: DB
+            type: file
+            disableDeletion: false
+            allowUiUpdates: true
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/db
     datasources:
       datasources.yaml:
         apiVersion: 1
