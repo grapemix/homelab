@@ -32,6 +32,8 @@ spec:
       type: Recreate
     admin:
       existingSecret: grafana-admin-secret
+    plugins:
+      - redis-datasource
     env:
       GF_EXPLORE_ENABLED: true
       GF_SERVER_ROOT_URL: "https://grafana.${SECRET_DOMAIN}"
@@ -153,6 +155,11 @@ spec:
         kubernetes-coredns:
           url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
           datasource: Prometheus
+      db:
+        redis:
+          gnetId: 12776 # https://grafana.com/grafana/dashboards/12776?tab=revisions
+          revision: 2
+          datasource: Redis
     sidecar:
       dashboards:
         enabled: true
