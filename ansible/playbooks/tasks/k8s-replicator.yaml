@@ -1,0 +1,56 @@
+---
+- name: K8s-replicator
+  block:
+    - name: K8s-replicator | Check if K8s-replicator HelmChart exists
+      kubernetes.core.k8s_info:
+        kubeconfig: /etc/rancher/k3s/k3s.yaml
+        name: k8s-replicator
+        kind: HelmChart
+        namespace: kube-system
+      register: k8s_replicator_helmchart
+
+    - name: K8s-replicator | Wait for K8s-replicator to rollout
+      when: k8s_replicator_helmchart.resources | count > 0
+      kubernetes.core.k8s_info:
+        kubeconfig: /etc/rancher/k3s/k3s.yaml
+        name: helm-install-k8s-replicator
+        kind: Job
+        namespace: kube-system
+        wait: true
+        wait_condition:
+          type: Complete
+          status: true
+        wait_timeout: 360
+
+    - name: K8s-replicator | Patch the K8s-replicator HelmChart to unmanage it
+      when: k8s_replicator_helmchart.resources | count > 0
+      kubernetes.core.k8s_json_patch:
+        kubeconfig: /etc/rancher/k3s/k3s.yaml
+        name: k8s-replicator
+        kind: HelmChart
+        namespace: kube-system
+        patch:
+          - op: add
+            path: /metadata/annotations/helmcharts.helm.cattle.io~1unmanaged
+            value: "true"
+
+    - name: K8s-replicator | Delete the K8s-replicator HelmChart CR
+      when: k8s_replicator_helmchart.resources | count > 0
+      kubernetes.core.k8s:
+        kubeconfig: /etc/rancher/k3s/k3s.yaml
+        name: k8s-replicator
+        kind: HelmChart
+        namespace: kube-system
+        state: absent
+
+    - name: K8s-replicator | Force delete the K8s-replicator HelmChart
+      when: k8s_replicator_helmchart.resources | count > 0
+      kubernetes.core.k8s:
+        kubeconfig: /etc/rancher/k3s/k3s.yaml
+        name: k8s-replicator
+        kind: HelmChart
+        namespace: kube-system
+        state: patched
+        definition:
+          metadata:
+            finalizers: []

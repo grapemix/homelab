@@ -1,0 +1,14 @@
+---
+# https://docs.k3s.io/helm
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: k8s-replicator
+  namespace: kube-system
+spec:
+  # renovate: datasource=helm
+  repo: https://helm.mittwald.de
+  chart: kubernetes-replicator
+  version: 2.9.1
+  targetNamespace: kube-system
+  bootstrap: true
