@@ -47,6 +47,7 @@
       loop:
         - { name: cilium, kind: HelmChart, namespace: kube-system }
         - { name: coredns, kind: HelmChart, namespace: kube-system }
+        - { name: k8s-replicator, kind: HelmChart, namespace: kube-system }
         - { name: policy, kind: CiliumL2AnnouncementPolicy }
         - { name: pool, kind: CiliumLoadBalancerIPPool }
         - { name: podmonitors.monitoring.coreos.com, kind: CustomResourceDefinition }
@@ -61,6 +62,10 @@
     - name: Cilium
       when: k3s_primary_control_node
       ansible.builtin.include_tasks: tasks/cilium.yaml
+
+    - name: K8s-replicator
+      when: k3s_primary_control_node
+      ansible.builtin.include_tasks: tasks/k8s-replicator.yaml
 
     - name: Cruft
       when: k3s_primary_control_node
