@@ -54,7 +54,7 @@ spec:
         dashboards:
           enabled: true
           annotations:
-            grafana_folder: Cilium
+            grafana_folder: Network
       relay:
         enabled: true
         rollOutPods: true
@@ -101,7 +101,7 @@ spec:
       dashboards:
         enabled: true
         annotations:
-          grafana_folder: Cilium
+          grafana_folder: Network
     prometheus:
       enabled: true
       serviceMonitor:
@@ -110,7 +110,7 @@ spec:
     dashboards:
       enabled: true
       annotations:
-        grafana_folder: Cilium
+        grafana_folder: Network
     rollOutCiliumPods: true
     securityContext:
       privileged: true
