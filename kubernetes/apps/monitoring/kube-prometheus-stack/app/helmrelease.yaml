@@ -139,6 +139,12 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
+        additionalScrapeConfigs:
+          - job_name: custom/ntfy
+            metrics_path: /metrics
+            static_configs:
+              # Should sync w/ homelab-net/ntfy/app/helmrelease.yaml
+              - targets: ['ntfy.net.svc.cluster.local:9090']
     grafana:
       enabled: false
       forceDeployDashboards: true
