@@ -139,6 +139,17 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
+        additionalScrapeConfigs:
+          - job_name: custom/ntfy
+            metrics_path: /metrics
+            kubernetes_sd_configs:
+              - role: pod
+                selectors:
+                  - role: pod
+                    label: "app.kubernetes.io/name=ntfy"
+            #
+            #static_configs:
+            #  - targets: ['${IP_NTFY_CLUSTER_FOR_PROMETHEUS}:9090']
     grafana:
       enabled: false
       forceDeployDashboards: true
