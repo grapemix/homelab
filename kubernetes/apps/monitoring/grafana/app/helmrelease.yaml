@@ -127,6 +127,15 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/db
+          - name: monitor
+            orgId: 1
+            folder: monitor
+            type: file
+            disableDeletion: false
+            allowUiUpdates: true
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/monitor
     datasources:
       datasources.yaml:
         apiVersion: 1
