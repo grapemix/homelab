@@ -7,3 +7,4 @@ resources:
   - ./homelab-db.yaml
   - ./homelab-test.yaml
   - ./homelab-auth.yaml
+  - ./homelab-monitor.yaml
