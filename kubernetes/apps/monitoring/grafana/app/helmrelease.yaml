@@ -30,18 +30,55 @@ spec:
   values:
     deploymentStrategy:
       type: Recreate
-    admin:
-      existingSecret: grafana-admin-secret
+    #admin:
+    #  existingSecret: grafana-admin-secret
     plugins:
       - redis-datasource
     env:
+      GF_AUTH_GENERIC_OAUTH_API_URL: https://auth.${SECRET_DOMAIN}/api/oidc/userinfo
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://auth.${SECRET_DOMAIN}/api/oidc/authorization
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: grafana
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://auth.${SECRET_DOMAIN}/api/oidc/token
+      GF_DATE_FORMATS_USE_BROWSER_LOCALE: true
       GF_EXPLORE_ENABLED: true
+      GF_FEATURE_TOGGLES_ENABLE: publicDashboards
+      GF_SECURITY_COOKIE_SAMESITE: grafana
       GF_SERVER_ROOT_URL: "https://grafana.${SECRET_DOMAIN}"
     grafana.ini:
       analytics:
         check_for_updates: false
         check_for_plugin_updates: false
         reporting_enabled: false
+      #
+      auth:
+        signout_redirect_url: "https://auth.${SECRET_DOMAIN}/logout"
+        oauth_allow_insecure_email_lookup: true
+        oauth_auto_login: true
+      auth.basic:
+        enabled: false
+      auth.anonymous:
+        enabled: false
+      auth.generic_oauth:
+        enabled: true
+        name: Authelia
+        icon: signin
+        tls_skip_verify_insecure: true
+        client_id: "${SECRET_GRAFANA_OAUTH_CLIENT_ID}"
+        client_secret: "${SECRET_GRAFANA_OAUTH_CLIENT_SECRET}"
+        scopes: "openid profile email groups"
+        empty_scopes: false
+        login_attribute_path: preferred_username
+        groups_attribute_path: groups
+        name_attribute_path: name
+        use_pkce: true
+      #  role_attribute_path: |
+      #    contains(groups[*], 'monitor-admins') && 'Admin' || contains(groups[*], 'monitor-editors') && 'Editor' || contains(groups[*], 'monitor-viewers') && 'Viewer'
+      auth.generic_oauth.group_mapping:
+        org_id: 1
+        role_attribute_path: |
+          contains(groups[*], 'admin') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
+      news:
+        news_feed_enabled: false
       date_formats:
         use_browser_locale: true
         default_timezone: "${TIMEZONE}"
