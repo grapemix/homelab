@@ -6,3 +6,4 @@ resources:
   - ./homelab-backup.yaml
   - ./homelab-db.yaml
   - ./homelab-test.yaml
+  - ./homelab-auth.yaml
