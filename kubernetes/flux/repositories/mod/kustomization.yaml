@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - ./homelab-stor.yaml
   - ./homelab-backup.yaml
+  - ./homelab-db.yaml
   - ./homelab-test.yaml
