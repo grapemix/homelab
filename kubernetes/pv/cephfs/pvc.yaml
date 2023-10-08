@@ -1,0 +1,49 @@
+# This PV doesn't work for some reason and it seems we can use volusync to backup without messing with the root path
+#---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: fast-cephfs-family-media
+#spec:
+#  accessModes:
+#    - ReadWriteMany
+#  capacity:
+#    storage: 2Ti
+#  storageClassName: "fast-ceph-filesystem"
+#  csi:
+#    driver: rook-ceph.cephfs.csi.ceph.com
+#    nodeStageSecretRef:
+#      # node stage secret name
+#      name: rook-csi-cephfs-node-user
+#      # node stage secret namespace where above secret is created
+#      namespace: rook-ceph
+#    volumeAttributes:
+#      # Required options from storageclass parameters need to be added in volumeAttributes
+#      "clusterID": "rook-ceph"
+#      "fsName": "fast-ceph-filesystem"
+#      "pool": "fast-data0"
+#      "staticVolume": "true"
+#      "rootPath": /volumes/_nogroup/family/media/ac00d91e-aff1-4f44-b70e-adfcb6e0f4aa
+#    # volumeHandle can be anything, need not to be same
+#    # as PV name or volume name. keeping same for brevity
+#    volumeHandle: fast-cephfs-family-media-pvc
+#  persistentVolumeReclaimPolicy: Retain
+#  volumeMode: Filesystem
+#---
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: fast-cephfs-family-media-pvc
+#  namespace: media
+#  labels:
+#    backup: "false"
+#spec:
+#  accessModes:
+#    - ReadWriteMany
+#  storageClassName: "fast-ceph-filesystem"
+#  resources:
+#    requests:
+#      storage: 2Ti
+#  volumeMode: Filesystem
+#  # volumeName should be same as PV name
+#  #volumeName: fast-cephfs-family-media
