@@ -1,6 +1,10 @@
 ---
 version: "3"
 
+vars:
+  ANSIBLE_PLAYBOOK_DIR: "{{.ANSIBLE_DIR}}/playbooks"
+  ANSIBLE_INVENTORY_DIR: "{{.ANSIBLE_DIR}}/inventory"
+
 tasks:
 
   verify:
@@ -79,3 +83,13 @@ tasks:
       - task: certificates
       - task: ingresses
       - task: pods
+
+  halt:
+    desc: Halt of all the hosts or specific host
+    dir: "{{.ANSIBLE_DIR}}"
+    cmd: ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml {{.ANSIBLE_PLAYBOOK_DIR}}/cluster-halt.yaml
+
+  uncordon:
+    desc: Uncordon of all the hosts or specific host
+    dir: "{{.ANSIBLE_DIR}}"
+    cmd: kubectl get nodes -o json | jq -r '.items[] | select(.spec.taints) | select(.status.conditions[].status=="False") | .metadata.name' | uniq |  xargs -L1 bash -c 'kubectl uncordon $0'
