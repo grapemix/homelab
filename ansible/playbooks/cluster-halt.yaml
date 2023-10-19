@@ -1,0 +1,29 @@
+---
+- name: Halt
+  hosts: '{{ ansible_limit | default("all") }}'
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+    - name: Pausing for 5 seconds...
+      ansible.builtin.pause:
+        seconds: 5
+  tasks:
+    - name: Halt
+      block:
+        - name: Drain a node, but abort if there are pods not managed by a ReplicationController, Job, or DaemonSet, and use a grace period of 3 minutes.
+          #ansible.builtin.command: "kubectl drain --ignore-daemonsets --delete-emptydir-data --force --grace-period=180 {{ inventory_hostname }}"
+          # should I ln /etc/rancher/k3s/config.yaml to /etc/rancher/k3s/k3s.yaml in PHOENIX?
+          kubernetes.core.k8s_drain:
+            kubeconfig: /etc/rancher/k3s/k3s.yaml
+            state: drain
+            name: "{{ inventory_hostname }}"
+            delete_options:
+              terminate_grace_period: 180
+              delete_emptydir_data: true
+              disable_eviction: true
+              ignore_daemonsets: true
+              force: true
+        - name: Shutdown
+          community.general.shutdown:
+            delay: 600
