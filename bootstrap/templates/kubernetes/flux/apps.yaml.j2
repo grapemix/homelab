@@ -24,6 +24,8 @@ spec:
       - kind: ConfigMap
         name: cluster-settings-user
       - kind: Secret
+        name: cluster-secrets-email
+      - kind: Secret
         name: cluster-secrets-user
   patches:
     - patch: |-
@@ -44,6 +46,8 @@ spec:
                 name: cluster-secrets
               - kind: ConfigMap
                 name: cluster-settings-user
+              - kind: Secret
+                name: cluster-secrets-email
               - kind: Secret
                 name: cluster-secrets-user
       target:
