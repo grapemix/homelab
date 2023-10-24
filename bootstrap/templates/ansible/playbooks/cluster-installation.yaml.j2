@@ -57,6 +57,29 @@
         - { name: scrapeconfigs.monitoring.coreos.com, kind: CustomResourceDefinition }
         - { name: servicemonitors.monitoring.coreos.com, kind: CustomResourceDefinition }
 
+    - name: Fix DNS for ubuntu
+      block:
+        - name: Stop and disable service which messes with DNS
+          service:
+            name: "systemd-resolved"
+            state: stopped
+            enabled: false
+        - name: Delete link to the systemd-resolved resolv.conf
+          ansible.builtin.file:
+            path: /etc/resolv.conf
+            state: absent
+        - name: Create empty resolv.conf
+          ansible.builtin.file:
+            path: /etc/resolv.conf
+            state: touch
+        - name: Setup nameserver
+          blockinfile:
+            dest: /etc/resolv.conf
+            block: |-
+              nameserver {{ bootstrap_k8s_gateway_addr }}
+              nameserver 1.1.1.1
+      when: ansible_facts['distribution'] == 'Ubuntu'
+
     - name: Coredns
       when: k3s_primary_control_node
       ansible.builtin.include_tasks: tasks/coredns.yaml
