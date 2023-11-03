@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./local-path-provisioner.yaml
   - ./github-private-key.sops.yaml
+  - ./gitlab-readonly-pat-basic-access-auth.sops.yaml
