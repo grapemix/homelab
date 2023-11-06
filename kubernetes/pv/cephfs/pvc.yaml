@@ -47,3 +47,46 @@
 #  volumeMode: Filesystem
 #  # volumeName should be same as PV name
 #  #volumeName: fast-cephfs-family-media
+---
+#apiVersion: batch/v1
+#kind: Job
+#metadata:
+#  name: k8s-janitor
+#  namespace: kube-system
+#  labels:
+#    app: k8s-janitor
+#spec:
+#  template:
+#    spec:
+#      serviceAccountName: k8s-janitor-role
+#      restartPolicy: Never
+#      containers:
+#        - name: k8s-janitor
+#          imagePullPolicy: Always
+#          image: bitnami/kubectl
+#          command: ["/bin/bash", "-c"]
+#          args:
+#            - export userID=$(kubectl get secret rook-csi-cephfs-node -n rook-ceph -o=jsonpath="{.data.adminID}" | base64 -d);
+#              export userKey=$(kubectl get secret rook-csi-cephfs-node -n rook-ceph -o=jsonpath="{.data.adminKey}" | base64 -d);
+#              kubectl create secret generic rook-csi-cephfs-node-user -n rook-ceph --from-literal=userID=$userID --from-literal=userKey=$userKey;
+#  backoffLimit: 4
+#---
+#kind: ClusterRoleBinding
+#apiVersion: rbac.authorization.k8s.io/v1
+#metadata:
+#  name: k8s-janitor-role
+#subjects:
+#  - kind: ServiceAccount
+#    name: k8s-janitor-role
+#    namespace: kube-system
+#roleRef:
+#  kind: ClusterRole
+#  name: cluster-admin
+#  apiGroup: rbac.authorization.k8s.io
+#---
+#apiVersion: v1
+#kind: ServiceAccount
+#metadata:
+#  name: k8s-janitor-role
+#  namespace: kube-system
+#---
