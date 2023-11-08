@@ -167,6 +167,7 @@ spec:
         enabled: true
         searchNamespace: ALL
         labelValue: ""
+        label: grafana_datasource
     serviceMonitor:
       enabled: true
     ingress:
