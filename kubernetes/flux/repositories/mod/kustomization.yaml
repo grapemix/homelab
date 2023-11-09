@@ -10,3 +10,5 @@ resources:
   - ./homelab-monitor.yaml
   - ./homelab-net.yaml
   - ./homelab-media.yaml
+  - ./homelab-warez.yaml
+  - ./homelab-dev.yaml
