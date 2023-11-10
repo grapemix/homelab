@@ -12,3 +12,4 @@ resources:
   - ./homelab-media.yaml
   - ./homelab-warez.yaml
   - ./homelab-dev.yaml
+  - ./homelab-security.yaml
