@@ -241,6 +241,10 @@ spec:
           gnetId: 12776 # https://grafana.com/grafana/dashboards/12776?tab=revisions
           revision: 2
           datasource: Redis
+      security:
+        trivy-operator:
+          gnetId: 16337
+          revision: 9
     sidecar:
       dashboards:
         enabled: true
