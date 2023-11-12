@@ -145,6 +145,15 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/home
+          - name: media
+            orgId: 1
+            folder: media
+            type: file
+            disableDeletion: false
+            allowUiUpdates: true
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/media
     datasources:
       datasources.yaml:
         apiVersion: 1
