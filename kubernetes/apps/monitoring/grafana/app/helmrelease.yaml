@@ -40,6 +40,9 @@ spec:
         check_for_updates: false
         check_for_plugin_updates: false
         reporting_enabled: false
+      date_formats:
+        use_browser_locale: true
+        default_timezone: "${TIMEZONE}"
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
