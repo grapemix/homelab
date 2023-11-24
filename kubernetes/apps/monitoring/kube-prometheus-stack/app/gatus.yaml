@@ -22,3 +22,27 @@ data:
         ui:
           hide-url: true
           hide-hostname: true
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-gatus-ep
+  labels:
+    gatus.io/enabled: "true"
+data:
+  config.yaml: |
+    endpoints:
+      - name: alertmanager
+        group: monitoring
+        url: https://alertmanager.${SECRET_DOMAIN}
+        interval: 1m
+        client:
+          dns-resolver: tcp://1.1.1.1:53
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: ntfy
+        ui:
+          hide-url: true
+          hide-hostname: true
+---

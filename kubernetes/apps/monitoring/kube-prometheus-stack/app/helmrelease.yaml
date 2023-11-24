@@ -35,7 +35,26 @@ spec:
       enabled: true
     cleanPrometheusOperatorObjectNames: true
     alertmanager:
-      enabled: false
+      ingress:
+        enabled: true
+        pathType: Prefix
+        ingressClassName: internal
+        hosts:
+          - &alertmanager-host alertmanager.${SECRET_DOMAIN}
+        tls:
+          - hosts:
+              - *alertmanager-host
+      alertmanagerSpec:
+        replicas: 2
+        useExistingSecret: true
+        configSecret: alertmanager-secret
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: local-path
+              resources:
+                requests:
+                  storage: 1Gi
     kube-state-metrics:
       metricLabelsAllowlist:
         - "deployments=[*]"
@@ -119,10 +138,10 @@ spec:
           hajimari.io/icon: simple-icons:prometheus
         pathType: Prefix
         hosts:
-          - &host "prometheus.${SECRET_DOMAIN}"
+          - &prometheus-host "prometheus.${SECRET_DOMAIN}"
         tls:
           - hosts:
-              - *host
+              - *prometheus-host
       prometheusSpec:
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
