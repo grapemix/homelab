@@ -185,6 +185,13 @@ spec:
             jsonData:
               prometheusType: Prometheus
             isDefault: true
+          - name: Alertmanager
+            type: alertmanager
+            uid: alertmanager
+            access: proxy
+            url: http://alertmanager-operated.monitoring.svc.cluster.local:9093
+            jsonData:
+              implementation: prometheus
     dashboards:
       default:
         node-exporter-full:
