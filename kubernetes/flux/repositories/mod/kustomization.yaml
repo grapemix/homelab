@@ -8,3 +8,4 @@ resources:
   - ./homelab-test.yaml
   - ./homelab-auth.yaml
   - ./homelab-monitor.yaml
+  - ./homelab-net.yaml
