@@ -13,3 +13,4 @@ resources:
   - ./homelab-warez.yaml
   - ./homelab-dev.yaml
   - ./homelab-security.yaml
+  - ./homelab-bang.yaml
