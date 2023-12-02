@@ -1,0 +1,11 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: homelab
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://git.fung.house/api/packages/kingston/helm
+  secretRef:
+    name: gitea-reporeg-all-ro-pat-basic-access-auth
