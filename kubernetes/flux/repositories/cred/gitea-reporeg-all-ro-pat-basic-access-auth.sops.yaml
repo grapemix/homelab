@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: gitea-reporeg-all-ro-pat-basic-access-auth
+    namespace: flux-system
+stringData:
+    username: ENC[AES256_GCM,data:7LPp0pM9R9M=,iv:31dwtDEAiePW73r1wQHDiNO0xXm6D5s77D2wDNhpQa4=,tag:Vrdy4UWtKe/FeoWrYEUttw==,type:str]
+    #ENC[AES256_GCM,data:l92CQHGpqMyCZga93s3EvFm3a2A5BzW4N19Up3lRBke3nLrbWdsreqr1/ISyzT3H1I6WPB6v2V/oylQ6,iv:yELp4/jCuasbs/fw/Amuaa/ti4w49smdih7kZtA2SjQ=,tag:mSdWocjJYU4n4nxxsoVC4Q==,type:comment]
+    password: ENC[AES256_GCM,data:s6pVzJVo1B80t3Mj7JiPX5gEMNYHdJcWMiUEwUPonqOj4ybjZ7uO+g==,iv:UtgPSlFJrTgrJsf5tsxDHG+GkraDmy9CXd0RIYemQvc=,tag:QXfq1upfm8gcgXkgWx4vqg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1qh3gh9vltq82hgjxdtga37svmdvzj2zgdxzt0zzsh4rndmtlkujsmrw26m
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA5U3MyNENaVi9NT2h3RVVl
+            bXFpVGJMdGdJR3pKdDZxWlFSV2pjN3ljMjM4Ckt3N3dsTmdSSmhNYWlOcUhtTi9O
+            SWdTWnlaUkpvZGNreGhnNUh6a3BoTjgKLS0tIGthTGt3eldRbkxISWNDcnIwbWxD
+            NS9GUFpxV3pLTnpLc3FDWm5DKzVkNE0Kj19a2K3Ehg9D3p07mEaPsUkmpbLqmEVH
+            zTQ/uXuBiTU9qbKS4jobIEg03yVbA8Tdxrg40j8BvqTES/j0KGzdPQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-12-03T02:14:56Z"
+    mac: ENC[AES256_GCM,data:gQxKlAHQs6oLkFoLCCvOlATiH+qqXa4UHUWm7OjKTRm3LlGLWad3zz7OEPVfVDhSaBuuZu+vN6xvNJcb02viF3FCNcgdPWYUuohhBTNpuOmHFe0il0G5v3ruJPGo4wF2tSsluGbPpwuWFEcZoA59x3Jr7rcoIhgX9oT7h+dr8jk=,iv:8U1o4lNsJ2pX+5p6qXmkqpQGtgkkmw21HPTuhmkOgvA=,tag:2WnKbeeq0+V+6O2miInJVg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3

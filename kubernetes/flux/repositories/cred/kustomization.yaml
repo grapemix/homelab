@@ -3,3 +3,4 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./codeberg-repopkg-all-ro-pat-basic-access-auth.sops.yaml
+  - ./gitea-reporeg-all-ro-pat-basic-access-auth.sops.yaml
