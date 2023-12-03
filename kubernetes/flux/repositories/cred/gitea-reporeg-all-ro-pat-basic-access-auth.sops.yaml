@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: gitea-reporeg-all-ro-pat-basic-access-auth
+    namespace: flux-system
+stringData:
+    username: ENC[AES256_GCM,data:v5CnblZ9IFA=,iv:vomybUApTOGAVahGmPx1xm6WMa56yd2aBALe0hnapQg=,tag:hSP+QPrT0m+8Bl7ioElNzA==,type:str]
+    #ENC[AES256_GCM,data:JGXnTmybYmiKXR+x894zXzILLWG8vV8DlxX3qPdLiJw3gTmt2VWMq4Dh5k65m8bIw171x7votN+0trtD,iv:rK7LxTk/QK1o+1Yyrz0tXjps7LTEZZQZ7OE40Zec+4M=,tag:bhc8gvEZ0cz4bC3U/GGBDQ==,type:comment]
+    #ENC[AES256_GCM,data:zNThp+GBILKcDzuF0nPR94nurX2CU2AqN8m/NGbEo9FSk/81rxLuPmx2pcQnyUk=,iv:e+12y81nNnPpqAWanCuSxUR3WR5Ogx7+KQiHeeB2mAg=,tag:K9i0brtNswlZ1OIg50Atmg==,type:comment]
+    password: ENC[AES256_GCM,data:clSJ4hQpFwxTp1IgR78YkUG9HlNX+nplEUKiS2oYuoCTmyFtfu4mGQ==,iv:SbS4wiWi1VolDRtytIdL24RPOk11bliSrLjc8PzIhR4=,tag:ueDygUklgGtGqxWuuIsnaw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1qh3gh9vltq82hgjxdtga37svmdvzj2zgdxzt0zzsh4rndmtlkujsmrw26m
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB6YnVtV1RISk5PeTVKdFNo
+            alhuY0RVVnUwS0JCUTMvQnFOU1NmRUxEWlg4Clg4cXBUTEJmM0hHd09CTkVuU0FF
+            bVpRWmNLWTZ1V3JBcll0OHdWTXFiWlUKLS0tIEEyWVJZT2RESG84VGVycTdLNHFx
+            R005V0dUOGtCdnN1K1AzbFJMeE5WZ1UKQ4tUtW3YLPUd7l6rTIWGyq6uN/kGTNd0
+            VmINGJSDTC0opUatvCdYiUbg1gKWk/MqPyXqvi/zf7+HXXtN3TBoeQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-07-25T07:19:20Z"
+    mac: ENC[AES256_GCM,data:XDXxBub/OHqAmaEs7KHfaCYA8UWhn5BH9JQZcbhu6TmyDQhQOwbl5Swk11H00QEeI9csvbBsqsYkU/rS0FC14peVIrvbg6mCUEYNHADZ+8S5eb0r9MSA05qXOpbnZKaqplJ2KmKi9oa6GW9v5XFJ0e8F486UqlBliWbyEYRa3Fc=,iv:FIHZnSu+lsrNgMQXGpDwn7U+O8DkMwtKMg1P0bCCZOQ=,tag:umkb6mHc+TIE+Ea/YAKO9g==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
