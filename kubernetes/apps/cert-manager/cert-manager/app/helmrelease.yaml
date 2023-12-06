@@ -39,3 +39,10 @@ spec:
       servicemonitor:
         enabled: true
         prometheusInstance: monitoring
+    featureGates: AdditionalCertificateOutputFormats=true
+    webhook:
+      replicaCount: 1
+      featureGates: AdditionalCertificateOutputFormats=true
+    cainjector:
+      featureGates: AdditionalCertificateOutputFormats=true
+      replicaCount: 1
