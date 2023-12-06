@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: codeberg-repopkg-all-ro-pat-basic-access-auth
+    namespace: flux-system
+stringData:
+    username: ENC[AES256_GCM,data:zkV50jO6Vpc=,iv:lHB3ymqASno/RXcHn5p3ktB0luN0rRb3q+vy0YZk5pg=,tag:qKzvm/miwhjibMOJP4erBg==,type:str]
+    #ENC[AES256_GCM,data:OYvcgQN6YrToJYIdWDs1N64DRmpoAyzIqoCO+cxehXUSKgabxWtxBzvV8yssDA358IIwHME0o4L4fA==,iv:xBugvVd2dW7EM7l2SbClyEsI9JDwAGsWfl94ZEJX/rI=,tag:RJOfSJLCMdOykOFLSVmcFA==,type:comment]
+    password: ENC[AES256_GCM,data:HOl6ChFPTvCY6XAjhZlp6TyqxHTA98KWrGzAzPDcgO21Dv0l8OHCGQ==,iv:3gbHOW5leBKHfg6SlY5SdSgugLz+2w1W8uuswzsuRpw=,tag:Lq4U0oG86Wkuazicg+VFLQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1qh3gh9vltq82hgjxdtga37svmdvzj2zgdxzt0zzsh4rndmtlkujsmrw26m
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBFYWFrMzZXTU80T2Z3SDk4
+            bXNEWmpQYm8yb1ZqVUloME5JKy9Yeno4QW5jCjB4WS96VUtUVEZJZG9yL3FSZ2Y0
+            SWRPb1I0Ylc4cU0reGpHRG5ZbSt0YjgKLS0tIC9SSEdQTUppTW9VV0NEU29NUzI3
+            azIvdXFzQW1JVFh3emI3eE5vZGxXdWcKhSc+KiJd/eH31oqp0VfMERMzLWZx0dsg
+            XdUrDHKwNa8hgfrSY8ZFDxDqMnV1VziJN6tgc7ZRIYjFTYNqFLWDKA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-12-06T23:52:01Z"
+    mac: ENC[AES256_GCM,data:DtmsiIwDl9GkaQ/G21z4G3uj++LlZ1s6cikrJN7slt8Q4KAwDvILZGkynUxHv8PpQH+UDR9UcPu/n7g/ZLmwXAt7tNO4px4/I0gtwe8gbYvyp0Vi/zvTldidrEQdTMxVxk6aiMEvZ56G/HyWm+SawqHLY/v1XNhWeam5mRQabWw=,iv:HKdkBh6aYzBeAXZsnyLJkJA7HaZSvVWOhCCOiju60kQ=,tag:FriRF++Vq+FvBJ9vDb/EWg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
