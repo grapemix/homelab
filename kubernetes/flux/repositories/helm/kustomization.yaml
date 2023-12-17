@@ -22,3 +22,4 @@ resources:
   - ./k8s-at-home.yaml
   - ./homelab.yaml
   - ./node-feature-discovery.yaml
+  - ./akri.yaml

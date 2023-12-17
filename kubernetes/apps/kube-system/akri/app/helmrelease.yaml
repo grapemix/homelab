@@ -1,0 +1,48 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: akri
+  namespace: kube-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: akri
+      version: 0.10.4
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: akri
+        namespace: flux-system
+  maxHistory: 5
+  install:
+    createNamespace: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+
+  values:
+    useDevelopmentContainers: false
+
+    kubernetesDistro: k3s
+
+    #
+    udev:
+      discovery:
+        enabled: true
+      configuration:
+        enabled: true
+        #name: zigbee
+        discoveryDetails:
+          udevRules:
+            # udevadm info --attribute-walk --path=$(udevadm info --query=path /dev/serial/by-id/usb-Silicon_Labs_Sonoff_Zigbee_3.0_USB_Dongle_Plus_0001-if00-port0)
+            - 'SUBSYSTEM=="usb", ATTR{product}=="Sonoff Zigbee 3.0 USB Dongle Plus"'
