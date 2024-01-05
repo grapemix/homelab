@@ -13,3 +13,5 @@ data:
   NODE_CIDR: "172.20.0.0/22"
   SECURITY_CONTEXT_RUN_AS_USER: "568"
   SECURITY_CONTEXT_RUN_AS_GROUP: "568"
+  # !!! Should separate in each stage
+  HOMELAB_STAGE: "prod"

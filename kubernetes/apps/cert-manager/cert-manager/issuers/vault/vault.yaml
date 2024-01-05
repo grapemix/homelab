@@ -1,0 +1,18 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: vault-issuer
+  namespace: kube-system
+spec:
+  vault:
+    path: pki/int_ca/sign/${HOMELAB_STAGE}
+    server: https://vault.${SECRET_DOMAIN}
+    # don't know why it doesn't work
+    #server: http://vault.secret:8200
+    auth:
+      kubernetes:
+        role: vault-issuer
+        mountPath: "/v1/auth/kubernetes/${HOMELAB_STAGE}"
+        serviceAccountRef:
+          name: vault-issuer
