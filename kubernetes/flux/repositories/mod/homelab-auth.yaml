@@ -45,3 +45,5 @@ spec:
         name: cluster-secrets-email
       - kind: Secret
         name: cluster-secrets-user
+      - kind: Secret
+        name: mod-auth
