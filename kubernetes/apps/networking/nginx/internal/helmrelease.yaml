@@ -89,7 +89,8 @@ spec:
       enabled: false
     tcp:
       "22": "dev/gitea-ssh:22"
-      "5432": "bang/crystal-pg:5432"
+      "5432": "bang/pg-crystal-rw:5432"
+      "50051": "bang/crystal-reactor:50051"
     udp:
       "1900": "media/theater-dlna:1900"
       "7359": "media/theater-autoDiscovery:7359"
