@@ -90,6 +90,8 @@ spec:
     tcp:
       "22": "dev/gitea-ssh:22"
       "5432": "bang/crystal-pg:5432"
+      # Not work. No time to deep dive
+      "50051": "bang/crystal:50051"
     udp:
       "1900": "media/theater-dlna:1900"
       "7359": "media/theater-autoDiscovery:7359"
