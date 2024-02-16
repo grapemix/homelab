@@ -1,0 +1,20 @@
+---
+- name: Bing mount
+  hosts: binger
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  tasks:
+    - name: Mount hdd by box label
+      ansible.posix.mount:
+        path: /media/box
+        src: LABEL=box
+        fstype: ext4
+        state: mounted
+    - name: Label the node
+      ansible.builtin.command: "kubectl label node {{ inventory_hostname }} bing-load=true"
+    - name: Mount to desktop
+      # Sync w/ desktop's /etc/fstab
+      command: "mount /media/bbhd"
+      delegate_to: 127.0.0.1
+      become: no

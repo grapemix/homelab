@@ -1,0 +1,20 @@
+---
+- name: Bing unmount
+  hosts: binger
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  tasks:
+    - name: Unmount to desktop
+      # Sync w/ desktop's /etc/fstab
+      command: "umount /media/bbhd"
+      delegate_to: 127.0.0.1
+      become: no
+    - name: Un-label the node
+      ansible.builtin.command: "kubectl label --overwrite nodes {{ inventory_hostname }} bing-load-"
+    - name: Mount hdd by box label
+      ansible.posix.mount:
+        path: /media/box
+        src: LABEL=box
+        fstype: ext4
+        state: unmounted
