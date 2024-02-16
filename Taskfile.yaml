@@ -22,7 +22,8 @@ includes:
   brew: .taskfiles/BrewTasks.yaml
   cluster: .taskfiles/ClusterTasks.yaml
   sops: .taskfiles/sops.yaml
-  vault: .taskfiles/vault.yaml
+  vault: helper/task/vault.yaml
+  farm: helper/task/farm.yaml
 
 tasks:
 

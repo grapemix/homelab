@@ -10,4 +10,5 @@ node_cidr: "{{ bootstrap_node_cidr }}"
 {% if bootstrap_ipv6_enabled | default(false) %}
 cluster_cidr_v6: "{{ bootstrap_cluster_cidr.split(',')[1] }}"
 service_cidr_v6: "{{ bootstrap_service_cidr.split(',')[1] }}"
+keepass_filepath: "{{ keepass_filepath }}"
 {% endif %}
