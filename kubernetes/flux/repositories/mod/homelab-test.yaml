@@ -7,7 +7,7 @@ metadata:
 spec:
   #gitImplementation: go-git
   interval: 5m
-  url: ssh://git@github.com/grapemix/homelab-test
+  url: ssh://git@ssh.git.fung.house/kingston/homelab-test.git
   ref:
     # can be a tag or branch
     #tag: v0.0.1
@@ -15,7 +15,10 @@ spec:
     #branch: main
   #
   secretRef:
-    name: github-private-key
+    name: gitea-bot-homelab-ro-ssh
+  recurseSubmodules: true
+  # Not work in v1
+  #gitImplementation: go-git
   #ignore: |
   #  # exclude all
   #  /*
