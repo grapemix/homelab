@@ -6,14 +6,15 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  url: https://git.fung.house/kingston/homelab-castle.git
+  url: ssh://git@ssh.git.fung.house/kingston/homelab-castle.git
   ref:
     # can be a tag or branch
     #tag: v0.0.1
     branch: dev
   #
   secretRef:
-    name: gitea-reporeg-all-ro-pat-basic-access-auth
+    name: gitea-bot-homelab-ro-ssh
+  recurseSubmodules: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
