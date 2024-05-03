@@ -163,6 +163,14 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/security
+          - name: backup
+            orgId: 1
+            folder: Backup
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/backup
     datasources:
       datasources.yaml:
         apiVersion: 1
