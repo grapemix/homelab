@@ -164,6 +164,12 @@ spec:
             static_configs:
               # Should sync w/ homelab-net/ntfy/app/helmrelease.yaml
               - targets: ['ntfy.net.svc.cluster.local:9090']
+          - job_name: custom/bareos
+            metrics_path: /metrics
+            static_configs:
+              # Should sync w/ homelab-backup/bareos/prometheus/helmrelease.yaml
+              - targets: ['bareos-prometheus.backup.svc.cluster.local:9625']
+
     grafana:
       enabled: false
       forceDeployDashboards: true
