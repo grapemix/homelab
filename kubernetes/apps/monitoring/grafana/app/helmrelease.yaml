@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: grafana
-      version: 7.0.8
+      version: 7.3.9
       sourceRef:
         kind: HelmRepository
         name: grafana
@@ -43,6 +43,7 @@ spec:
       GF_AUTH_GENERIC_OAUTH_API_URL: https://auth.${SECRET_DOMAIN}/api/oidc/userinfo
       GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://auth.${SECRET_DOMAIN}/api/oidc/authorization
       GF_AUTH_GENERIC_OAUTH_CLIENT_ID: grafana
+      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: "${SECRET_GRAFANA_OAUTH_CLIENT_SECRET}"
       GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://auth.${SECRET_DOMAIN}/api/oidc/token
       GF_DATE_FORMATS_USE_BROWSER_LOCALE: true
       GF_EXPLORE_ENABLED: true
@@ -68,8 +69,6 @@ spec:
         name: Authelia
         icon: signin
         tls_skip_verify_insecure: true
-        client_id: "${SECRET_GRAFANA_OAUTH_CLIENT_ID}"
-        client_secret: "${SECRET_GRAFANA_OAUTH_CLIENT_SECRET}"
         scopes: "openid profile email groups"
         empty_scopes: false
         login_attribute_path: preferred_username
