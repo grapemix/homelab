@@ -230,6 +230,11 @@ spec:
           revision: 2
           datasource:
             - { name: DS_PROMETHEUS, value: Prometheus }
+        kubernetes-events:
+          gnetId: 16967
+          revision: 1
+          datasource:
+            - { name: DS_LOKI , value: loki }
       network:
         cloudflared:
           gnetId: 17457 # https://grafana.com/grafana/dashboards/17457?tab=revisions
