@@ -256,6 +256,11 @@ spec:
         trivy-operator:
           gnetId: 16337
           revision: 9
+        vault:
+          gnetId: 18656
+          revision: 1
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
     sidecar:
       dashboards:
         enabled: true
