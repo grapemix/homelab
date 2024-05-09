@@ -225,6 +225,11 @@ spec:
         kubernetes-pods:
           url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
           datasource: Prometheus
+        kubernetes-persistent-volumes:
+          gnetId: 13646
+          revision: 2
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
       network:
         cloudflared:
           gnetId: 17457 # https://grafana.com/grafana/dashboards/17457?tab=revisions
