@@ -202,6 +202,14 @@ spec:
           gnetId: 1860 # https://grafana.com/grafana/dashboards/1860?tab=revisions
           revision: 36
           datasource: Prometheus
+        Opentelemetry-Collector-Data-Flow:
+          gnetId: 18309
+          revision: 2
+          datasource:
+            - { name: DS_PROMETHEUS, value: Prometheus }
+        OTEL-collector-monitoring:
+          gnetId: 15983
+          revision: 21
       flux:
         flux-cluster:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/cluster.json
