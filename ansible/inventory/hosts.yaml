@@ -12,6 +12,11 @@ kubernetes:
         soenglau3:
           ansible_user: ansibler
           ansible_host: 172.20.3.52
+    worker:
+      hosts:
+        phoenix:
+          ansible_user: kingston
+          ansible_host: 172.20.3.10
     binger:
       hosts:
         soenglau1:
