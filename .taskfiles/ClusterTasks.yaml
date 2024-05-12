@@ -88,7 +88,7 @@ tasks:
   halt:
     desc: Halt of all the hosts or specific host
     dir: "{{.ANSIBLE_DIR}}"
-    cmd: ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml {{.ANSIBLE_PLAYBOOK_DIR}}/cluster-halt.yaml
+    cmd: ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml {{.ANSIBLE_PLAYBOOK_DIR}}/cluster-halt.yaml {{.CLI_ARGS | default "-A"}}
 
   uncordon:
     desc: Uncordon of all the hosts or specific host
