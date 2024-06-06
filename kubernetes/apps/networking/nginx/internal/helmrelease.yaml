@@ -43,8 +43,6 @@ spec:
             - key: ingress-class
               operator: In
               values: ["internal"]
-      opentelemetry:
-        enabled: true
       config:
         client-body-buffer-size: 100M
         client-body-timeout: 120
@@ -81,13 +79,7 @@ spec:
             "dd.trace_id": "$upstream_http_traceId",
             "dd.span_id": "$upstream_http_spanId",
             "upstream_addr": "$upstream_addr",
-            "trace_id": "$opentelemetry_trace_id",
-            "span_id": "$opentelemetry_span_id"
           }
-        # Open Telemetry
-        enable-opentelemetry: "true"
-        otlp-collector-host: tempo-distributor.monitoring.svc.cluster.local
-        otlp-service-name: nginx-internal
         proxy-body-size: 0
         proxy-buffer-size: 16k
         ssl-protocols: TLSv1.3 TLSv1.2
