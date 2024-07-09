@@ -4,16 +4,17 @@ kind: Kustomization
 resources:
   - ./homelab-tmpl.yaml
   - ./homelab-stor.yaml
+  #
   - ./homelab-secret.yaml
-  - ./homelab-backup.yaml
-  - ./homelab-db.yaml
-  - ./homelab-test.yaml
-  - ./homelab-auth.yaml
-  - ./homelab-monitor.yaml
-  - ./homelab-net.yaml
-  - ./homelab-media.yaml
-  - ./homelab-warez.yaml
-  - ./homelab-dev.yaml
-  - ./homelab-security.yaml
-  - ./homelab-bang.yaml
-  - ./homelab-castle.yaml
+  #- ./homelab-backup.yaml
+  #- ./homelab-db.yaml
+  #- ./homelab-test.yaml
+  #- ./homelab-auth.yaml
+  #- ./homelab-monitor.yaml
+  #- ./homelab-net.yaml
+  #- ./homelab-media.yaml
+  #- ./homelab-warez.yaml
+  #- ./homelab-dev.yaml
+  #- ./homelab-security.yaml
+  #- ./homelab-bang.yaml
+  #- ./homelab-castle.yaml
