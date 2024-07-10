@@ -7,4 +7,4 @@ resources:
   - ./cluster-secrets-email.sops.yaml
   - ./cluster-secrets-user.sops.yaml
   - ./cluster-secrets-hw.sops.yaml
-  - ./externalsecret.yaml
+  #- ./externalsecret.yaml
