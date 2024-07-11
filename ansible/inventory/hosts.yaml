@@ -3,20 +3,22 @@ kubernetes:
   children:
     master:
       hosts:
-        soenglau1:
-          ansible_user: ansibler
-          ansible_host: 172.20.3.50
+        #
         soenglau2:
           ansible_user: ansibler
           ansible_host: 172.20.3.51
         soenglau3:
           ansible_user: ansibler
           ansible_host: 172.20.3.52
+        soenglau1:
+          ansible_user: ansibler
+          ansible_host: 172.20.3.50
     worker:
       hosts:
         soenglau4:
           ansible_user: ansibler
           ansible_host: 172.20.3.53
+        #
         phoenix:
           ansible_user: kingston
           ansible_host: 172.20.3.10
