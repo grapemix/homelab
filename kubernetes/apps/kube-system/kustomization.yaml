@@ -10,5 +10,4 @@ resources:
   - ./reloader/ks.yaml
   - ./kubernetes-replicator/ks.yaml
   - ./node-feature-discovery/ks.yaml
-  - ./pwd-generator.yaml
   - ./akri/ks.yaml
