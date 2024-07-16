@@ -45,9 +45,11 @@ spec:
         plugins:
           - name: log
           - name: errors
+          # Serves a /health endpoint on :8080, required for livenessProbe
           - name: health
             configBlock: |-
               lameduck 5s
+          # Serves a /ready endpoint on :8181, required for readinessProbe
           - name: ready
           - name: kubernetes
             parameters: cluster.local in-addr.arpa ip6.arpa
@@ -55,8 +57,16 @@ spec:
               pods insecure
               fallthrough in-addr.arpa ip6.arpa
               ttl 30
+          # Serves a /metrics endpoint on :9153, required for serviceMonitor
           - name: prometheus
             parameters: 0.0.0.0:9153
+
+          # redirect SECRET_DOMAIN to k8s-gateway
+          - name: forward
+            parameters: ${SECRET_DOMAIN} 172.20.3.81
+
+          #https://github.com/claughinghouse/k8s-gitops/blob/b924b19eac1301a3f96f2a8c858d030d59b07c93/kubernetes/apps/kube-system/coredns/app/helmrelease.yaml#L59C29-L59C41
+          #https://github.com/webD97/homelab-cluster-gitops/blob/5b0ff5b44298ba957e3dda68e94ca0bc033db60a/dns-system/coredns-lan/fleet.yaml
           - name: forward
             parameters: . /etc/resolv.conf
           - name: cache
