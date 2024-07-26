@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - ./codeberg-repopkg-all-ro-pat-basic-access-auth.sops.yaml
   - ./gitea-reporeg-all-ro-pat-basic-access-auth.sops.yaml
+  - ./gitea-reporeg-all-ro-docker.sops.yaml
   - ./gitea-bot-homelab-ro-ssh.sops.yaml
   - ./gitea-bot-homelab-rw-ssh.sops.yaml

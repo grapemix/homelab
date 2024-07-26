@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/dockerconfigjson
+metadata:
+    name: gitea-reporeg-all-ro-docker
+    namespace: flux-system
+    annotations:
+        replicator.v1.mittwald.de/replicate-to: backup,bang,castle,test,warez
+stringData:
+    #ENC[AES256_GCM,data:QztRvRSr8/HLDhQpHM6LD+SLEwekm+i7mLzLnCNJNu6Zw14bkIq/ssM9aHgHvoMuUT2hFc9fNs+i50h+jk+B1IE5t8MSM0ExH3OMgM38cLUREGlcZxZYfe35WYEzsAFQhFCp2yHOiqSYzI/j+dBRlDS0f8QrbemoVn/E27UTx87PF8om8QVpjRCIQIigpe5M5PF7+ct3l7U6omxvl/LEzCAiJgUKklnPCtz1kFR/FBNvftvEaL5Tcn6LQw/MWZIsVRpyXdA2OBeqlRnl52W81CO0ipo40l5e5/dmIPp2NyBM5LVND3GvfS1QI4zxvg+UGndO4gsl,iv:7/oPWEJ4rcY8rxE1cfgKw60Fw0JO7/wOUAWBpdgBngM=,tag:0uFVE0/QucSQGzhL+ayTWA==,type:comment]
+    .dockerconfigjson: ENC[AES256_GCM,data:DnZxL8NmPnp35m5mrRb/U1Gv7gBxVeT7QAu2F6SOl1MMS7AhQTdxOnXjs7VRclBYUU8FP/51v8J1Utvl2k0y2EsgFoGDxGcXlD5Ng+94snHYLs7ZZ9KPbSTQh9NEHJQimq+XzCKKfohYR4sSDMLpZ7TMEJ7ToGBC/Ahs1TLgZGeEZBS56DREPtT2q0Njb5G/urnBiXs+JjqyRb8274B/ldbwlu91SlTYQ4H8LnGVnPw0h8rt7UZTwA==,iv:1lX2den++1c5jV4eqTEhqaVpuUO2xeF+a/kDT6QGT7Y=,tag:9r9mfSoKzYFll194INUjvA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1qh3gh9vltq82hgjxdtga37svmdvzj2zgdxzt0zzsh4rndmtlkujsmrw26m
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBzNmhiREtpTFNkVkdpcVpk
+            dTZ0WVBBZGdocUdxRC8rdUJVcWJKaXZmQ3h3CjJPVlVLWndvYmozNTZOcnBBM1NQ
+            amtpSTBNRzBFTHl4R1ZCbm9rVkdhWkkKLS0tIG1SRzlWYUdDRnZxRFp6ZjZVN1B5
+            bXJlU3R4MVZDc3dwOWt2a2RqR1F0MUkKmYJB/2rzEIzMCEseU0dYFcfG3xk/1IEC
+            EkdlNaHMCkLLS61eltUPZUkjfcgjaOnVNGD6Fv7Ov+Ozk4DT95KLHQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-08-02T19:06:39Z"
+    mac: ENC[AES256_GCM,data:WGe7xDfziCnrDJJnt3tfbijMZ0vDMYDqGGpDTOkY47SsO452jwGKZltQbQBzG4aJs4atz22GVQZaJb+BTPbN3HLujuSYPC2tbHj3zwOPrZloiqpT2dK/te/T1K16WnqvxffmbMGoN3teEtHoH5bQlfBn27SYgSr/UT5eI2pPtx0=,iv:X2fC5PwbDt2+jbNknEtcCeuyt3OiXWOu7GUtMGUCTec=,tag:5dRtxOOf4w0xU6EDmXl/hw==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
